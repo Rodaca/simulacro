@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 
 import productoRoutes from '../routes/producto.routes.js';
+import categoriaRoutes from '../routes/categoria.routes.js';
 
 class Server {
 
@@ -9,6 +10,7 @@ class Server {
         this.app = express();
         this.port = process.env.PORT;
         this.productoPath = '/api/producto';
+        this.categoriaPath = '/api/categoria';
 
         
         this.middlewars();
@@ -24,6 +26,7 @@ class Server {
 
     routes(){
         this.app.use(this.productoPath, productoRoutes);
+        this.app.use(this.categoriaPath, categoriaRoutes);
 
     }
 

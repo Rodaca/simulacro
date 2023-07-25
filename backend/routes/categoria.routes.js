@@ -1,7 +1,6 @@
 import { Router } from 'express';
-import {check} from 'express-validator';
-import { validateDocuments } from '../middlewares/validate.documents.js';  
-import {getall, post, del, getone, put} from '../controllers/prodcuto.controllers.js';
+
+import {getall, post, del, getone, put} from '../controllers/categoria.controllers.js';
 
 
 const router = Router();

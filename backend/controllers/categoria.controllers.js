@@ -42,8 +42,8 @@ const getone = async (req, res)=>{
 const put = async (req, res)=>{
     try {
         const dato = await Categoria.findOne({_id:req.params.id});
-        if (req.body.nombre) {
-            dato.nombre = req.body.nombre;
+        if (req.body.tipo) {
+            dato.tipo = req.body.tipo;
         }
         await dato.save();
         res.send(dato);
