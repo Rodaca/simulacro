@@ -6,39 +6,39 @@ const productoSchema = mongoose.Schema({
         require: true,
         trim: true
     },
-    valor: {
-        type: Number,
-        require: true,
-        trim: true
-    },
-    descuento_porcentaje: {
-        type: Number,
-        require: true,
-        trim: true
-    },
-    cantidad: {
-        type: Number,
-        require: true,
+    foto: {
+        type: String,
         trim: true
     },
     marca: {
         type: String,
         trim: true
     },
+    codigo: {
+        type: String,
+        trim: true
+    },
+    precio_compra: {
+        type: Number,
+        require: true,
+        trim: true
+    },
+    precio_venta: {
+        type: Number,
+        require: true,
+        trim: true
+    },
     categorias: {
         type: Array,
         trim: true
     },
-    linea: {
-        type: String,
-        trim: true
-    },
-    foto: {
-        type: String,
-        trim: true
-    },
     descripcion: {
         type: String,
+        trim: true
+    },
+    cantidad: {
+        type: Number,
+        require: true,
         trim: true
     }
 }
