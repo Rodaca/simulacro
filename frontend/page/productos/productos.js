@@ -12,14 +12,16 @@ async function loadproducto() {
     const descuento=0.75
     productos.forEach((producto) => {
         const {nombre,foto,marca,codigo,precio_compra,precio_venta,categorias,descripcion,cantidad}=producto;
-        
+        let totalCategorias ="";
         categorias.forEach(element => {
-            `<button class="btn  bg-principal mb-2" type="button">${element}</button>`
+            totalCategorias+=
+            `<button class="btn  bg-principal mb-2" type="button">${element}</button>
+            `
         })
         contenedor.innerHTML+=`
         <div class="card"  style="width: 18rem;">
                             <div class="d-flex">
-                                <img src="../img/descargar.jpg" style="width: 14rem;" class="card-img-top" alt="..." data-bs-toggle="modal" data-bs-target="#modalmuestraProducto">
+                                <img src="../img/descargar.jpg" style="width: 14rem;" class="card-img-top" alt="..." data-bs-toggle="modal" data-bs-target="#modalmuestraProducto${codigo}">
                                 <div class="d-flex flex-column justify-content-center gap-2 p-1">
                                     <button type="button" class="btn btn-outline-dark">
                                         <i class="fa fa-plus"></i>
@@ -36,7 +38,7 @@ async function loadproducto() {
                                     </button>
                                 </div>
                             </div>
-                            <span data-bs-toggle="modal" data-bs-target="#modalmuestraProducto">
+                            <span data-bs-toggle="modal" data-bs-target="#modalmuestraProducto${codigo}">
                                 <div class="card-body">
                                     <h5 class="card-title">${nombre}</h5> 
                                 </div>
@@ -57,15 +59,11 @@ async function loadproducto() {
                             <div class="card-body list-group ">
                                 <div class="text-center">
                                     <p class="card-text">Categorias</p>
-                                    
-                                    <button class="btn  bg-principal mb-2" type="button">Categoria1</button>
-                                    <button class="btn  bg-principal mb-2" type="button">Categoria2</button>
-                                    <button class="btn  bg-principal mb-2" type="button">Categoria3</button>
-                                    <button class="btn  bg-principal mb-2" type="button">Categoria4</button>
+                                    ${totalCategorias}
                                 </div>
                             </div>
                         </div>
-                        <div class="modal fade" id="modalmuestraProducto" tabindex="-1" aria-labelledby="modalmuestraProductoContent"
+                        <div class="modal fade" id="modalmuestraProducto${codigo}" tabindex="-1" aria-labelledby="modalmuestraProductoContent"
                             aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -75,12 +73,26 @@ async function loadproducto() {
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        ...
+                                        <div class="card-body">
+                                            <h5 class="card-title">${nombre}</h5> 
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">${marca}</li>
+                                            <li class="list-group-item">Codigo: ${codigo}</li>
+                                            <li class="list-group-item">${descripcion}</li>
+                                        </ul>
+                                        <div class="card-body list-group ">
+                                            <div class="text-center">
+                                                <p class="card-text">Categorias</p>
+                                                ${totalCategorias}
+                                            </div>
+                                        </div>
                                     </div>
+                                    
+                                        
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
                                     </div>
                                 </div>
                             </div>
