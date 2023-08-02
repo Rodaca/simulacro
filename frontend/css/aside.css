@@ -9,11 +9,13 @@
     --gris: #8f9190;
 }
 .bg-principal{
-   background-color: var(--verde-pricipal); 
+   background-color: var(--verde-pricipal);
+   color: var(--blanco);
+   font-weight: bold;
 }
 .bg-gris{
     background-color: var(--gris); 
- }
+}
 
 body {
     background-color: var(--verde-pricipal);
@@ -26,7 +28,9 @@ header {
     display: flex;
     justify-content: space-between;
 }
-
+#inicioSeccion:hover{
+    color: var(--negro);
+}
 nav {
     display: flex;
     align-items: center;

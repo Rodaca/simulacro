@@ -1,4 +1,4 @@
-import Usuario from "../models/.js";
+import Usuario from "../models/usuarios.js";
 
 const getall = async (req, res)=>{
     try {

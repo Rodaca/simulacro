@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="../css/aside.css">
 </head>
 
@@ -16,9 +16,44 @@
     <header>
         <div class="logo">Inventario Ori</div>
         <nav>
-            <a href="#">Inicio</a>
-            <a href="#">Productos</a>
+            <a href="index.html">Inicio</a>
+            <a href="almacen.html">Productos</a>
             <a href="#">Contacto</a>
+            
+            <button class="btn btn-outline-light bg-principal" aria-label="Delete">
+                <i class="fa fa-sign-in fa-2x "></i>
+            </button>
+            <!-- Modal  inicio seccion-->
+            <div class="modal fade" id="modalInicioSeccion" tabindex="-1" aria-labelledby="modalInicioSeccionContent"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header  bg-principal">
+                            <h1 class="modal-title fs-5" id="modalInicioSeccionContent">Inicio de seccion</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="">
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1">Correo electronico</label>
+                                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                  <small id="emailHelp" class="form-text text-muted">Si no recuadas comuniquese con el administrador.</small>
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputPassword1">Password</label>
+                                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                </div>
+                                <div class="pt-2">
+                                    <button type="submit" class="btn bg-principal">Iniciar</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                </div>
+                                
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </nav>
     </header>
     <main class="">
@@ -34,263 +69,23 @@
         </div>
         <div class="p-3">
             <div class="row">
-                <div class="col-10"><!-- productos -->
-                    <div class="d-grid">
-                        <button class="btn btn-outline-light bg-gris btn-lg mb-2" data-bs-toggle="modal" data-bs-target="#modalAddProducto" type="button">Agregar Producto</button>
-                        <!-- Modal  agregar producto-->
-                        <div class="modal fade" id="modalAddProducto" tabindex="-1" aria-labelledby="modalAddProductoContent"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header  bg-principal">
-                                        <h1 class="modal-title fs-5" id="modalAddProductoContent">Agregar un nuevo Producto</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        ...
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-wrap gap-2">
-                        <div class="card"  style="width: 18rem;">
-                            <div class="d-flex">
-                                <img src="../img/descargar.jpg" style="width: 14rem;" class="card-img-top" alt="..." data-bs-toggle="modal" data-bs-target="#modalmuestraProducto">
-                                <div class="d-flex flex-column justify-content-center gap-2 p-1">
-                                    <button type="button" class="btn btn-outline-dark">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                    <span class="text-center">10</span>
-                                    <button type="button" class="btn btn-outline-dark">
-                                        <i class="fa fa-minus"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-outline-warning">
-                                        <i class="fas fa-pencil"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-outline-danger">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <span data-bs-toggle="modal" data-bs-target="#modalmuestraProducto">
-                                <div class="card-body">
-                                    <h5 class="card-title">Nombre del producto </h5> 
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Marca del producto</li>
-                                    <li class="list-group-item">Codigo</li>
-                                    <li class="list-group-item d-flex justify-content-around">
-                                        <p>PrecioN</p>
-                                        <p>PrecioND</p>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-around">
-                                        <p>PrecioV</p>
-                                        <p>PrecioVD</p>
-                                    </li>
-                                </ul>
-                            
-                            </span>
-                            <div class="card-body list-group ">
-                                <div class="text-center">
-                                    <p class="card-text ">Categorias</p>
-                                    <button class="btn  bg-principal mb-2" type="button">Categoria0</button>
-                                    <button class="btn  bg-principal mb-2" type="button">Categoria1</button>
-                                    <button class="btn  bg-principal mb-2" type="button">Categoria2</button>
-                                    <button class="btn  bg-principal mb-2" type="button">Categoria3</button>
-                                    <button class="btn  bg-principal mb-2" type="button">Categoria4</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal fade" id="modalmuestraProducto" tabindex="-1" aria-labelledby="modalmuestraProductoContent"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header  bg-principal">
-                                        <h1 class="modal-title fs-5" id="modalmuestraProductoContent">Descripcion del producto</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        ...
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk
-                                    of the card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">An item</li>
-                                <li class="list-group-item">A second item</li>
-                                <li class="list-group-item">A third item</li>
-                            </ul>
-                            <div class="card-body">
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk
-                                    of the card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">An item</li>
-                                <li class="list-group-item">A second item</li>
-                                <li class="list-group-item">A third item</li>
-                            </ul>
-                            <div class="card-body">
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk
-                                    of the card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">An item</li>
-                                <li class="list-group-item">A second item</li>
-                                <li class="list-group-item">A third item</li>
-                            </ul>
-                            <div class="card-body">
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk
-                                    of the card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">An item</li>
-                                <li class="list-group-item">A second item</li>
-                                <li class="list-group-item">A third item</li>
-                            </ul>
-                            <div class="card-body">
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-2 bg-light text-dark p-2">
+                    <h4>
+                        Tienda de cuidado personal
+                    </h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, aspernatur? Nam autem soluta, incidunt ea perferendis at molestias asperiores accusantium officia libero perspiciatis! Beatae totam id officia delectus consequuntur qui.
+                    </p>
                 </div>
-                <div class="col-2 categorias p-2"><!-- categorias  -->
-                    <div class="d-grid">
-                        <button class="btn btn-outline-light btn-lg mb-2" data-bs-toggle="modal" data-bs-target="#modalAddCategoria" type="button">Agregar Categoria</button>
-                        <div class="modal fade" id="modalAddCategoria" tabindex="-1" aria-labelledby="modalAddCategoriaContent"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header  bg-principal">
-                                        <h1 class="modal-title fs-5" id="modalAddCategoriaContent">Agregar Categoria</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        ...
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-10 bg-white text-dark">
+                    <div>
+                        <h4>Todo lo que necesitas para cuidar tu cuerpo</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt rem accusantium laudantium cum deserunt! Cumque mollitia similique illum, illo velit quos excepturi tenetur obcaecati impedit aut. Eveniet ipsam excepturi autem.</p>
                     </div>
                     <div>
-                        <ol class="list-group gap-1">
-                            <li class="list-group-item list-group-item-action d-flex justify-content-between">
-                                <div class="ms-2">
-                                    Categoria 1
-                                </div>
-                                <span class="badge bg-principal text-dark rounded-pill">14</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <div class="ms-2">
-                                    Categoria 2
-                                </div>
-                                <span class="badge bg-primary rounded-pill">14</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <div class="ms-2">
-                                    Categoria 3
-                                </div>
-                                <span class="badge bg-primary rounded-pill">14</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <div class="ms-2">
-                                    Categoria 4
-                                </div>
-                                <span class="badge bg-primary rounded-pill">14</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <div class="ms-2">
-                                    Categoria 5
-                                </div>
-                                <span class="badge bg-primary rounded-pill">14</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <div class="ms-2">
-                                    Categoria 5
-                                </div>
-                                <span class="badge bg-primary rounded-pill">14</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <div class="ms-2">
-                                    Categoria 6
-                                </div>
-                                <span class="badge bg-primary rounded-pill">14</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <div class="ms-2">
-                                    Categoria 7
-                                </div>
-                                <span class="badge bg-primary rounded-pill">14</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <div class="ms-2">
-                                    Categoria 8
-                                </div>
-                                <span class="badge bg-primary rounded-pill">14</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <div class="ms-2">
-                                    Categoria 9
-                                </div>
-                                <span class="badge bg-primary rounded-pill">14</span>
-                            </li>
-
-                        </ol>
+                        
                     </div>
+                    <h4>Tu punto para sentir mejor tu cuerpo</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam pariatur eum maiores quibusdam iste, obcaecati dolorum. Eos similique reiciendis architecto, id amet facilis. Impedit cum sapiente reiciendis consectetur eaque ex?</p>
                 </div>
             </div>
         </div>
