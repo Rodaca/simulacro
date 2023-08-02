@@ -2,7 +2,8 @@ import express from "express";
 import cors from "cors";
 
 import productoRoutes from '../routes/producto.routes.js';
-import categoriaRoutes from '../routes/categoria.routes.js';
+import categoriaRoutes from '../routes/categoria.routes.js';  
+import usuarioRoutes from '../routes/usuario.routes.js';  
 
 class Server {
 
@@ -11,6 +12,7 @@ class Server {
         this.port = process.env.PORT;
         this.productoPath = '/api/producto';
         this.categoriaPath = '/api/categoria';
+        this.usuarioPath = '/api/categoria';
 
         
         this.middlewars();
@@ -27,6 +29,7 @@ class Server {
     routes(){
         this.app.use(this.productoPath, productoRoutes);
         this.app.use(this.categoriaPath, categoriaRoutes);
+        this.app.use(this.usuarioPath, usuarioRoutes);
 
     }
 
