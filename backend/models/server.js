@@ -12,7 +12,7 @@ class Server {
         this.port = process.env.PORT;
         this.productoPath = '/api/producto';
         this.categoriaPath = '/api/categoria';
-        this.usuarioPath = '/api/categoria';
+        this.usuarioPath = '/api/usuario';
 
         
         this.middlewars();
