@@ -2,9 +2,27 @@ import { add,del,one,all,upd } from "./api.js";
 
 document.addEventListener("DOMContentLoaded", ()=>{
     loadcategoria();
+    loadcategoriaSelect();
 });
 
-
+async function loadcategoriaSelect(){
+    const categorias = await all();
+    const contenedor = document.querySelector("#SelectAddCategoria");
+    categorias.forEach((categoria) => {
+        const {tipo,_id}=categoria;
+        contenedor.innerHTML+=`
+        <option value="${_id}">${tipo}</option>
+        `
+    });
+}
+document.querySelector("#SelectAddCategoria").addEventListener("change",cargarSelecionados)
+function cargarSelecionados(){
+    const contenedor = document.querySelector("#contendorSelectSelecionados");
+        
+        contenedor.innerHTML+=`
+        <button class="btn  bg-principal mb-2" type="button">0</button>
+        `
+}
 //Read
 async function loadcategoria() {
     const categorias = await all();
@@ -20,8 +38,6 @@ async function loadcategoria() {
         </li>
         `
     });
-
-    
 };
 
 /* 

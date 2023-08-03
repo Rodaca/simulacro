@@ -103,7 +103,7 @@ async function loadproducto() {
     
 };
 
-/* 
+
 //Insert
 const formulario = document.querySelector("#formAddPremios");
 formulario.addEventListener("submit", insertPremio);
@@ -134,7 +134,7 @@ function validation(Objeto) {
   return !Object.values(Objeto).every((element) => element !== "");
 };
 
-
+/* 
 //Delete
 const eliminar = document.querySelector("main");
 eliminar.addEventListener("click",borrar);
