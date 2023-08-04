@@ -11,17 +11,32 @@ async function loadcategoriaSelect(){
     categorias.forEach((categoria) => {
         const {tipo,_id}=categoria;
         contenedor.innerHTML+=`
-        <option value="${_id}">${tipo}</option>
+        <option value="${tipo}">${tipo}</option>
         `
     });
 }
-document.querySelector("#SelectAddCategoria").addEventListener("change",cargarSelecionados)
-function cargarSelecionados(){
+const SelectAddCategoria=document.querySelector("#SelectAddCategoria")
+SelectAddCategoria.addEventListener("change",cargarSelecionados)
+function cargarSelecionados(event){
+    
     const contenedor = document.querySelector("#contendorSelectSelecionados");
         
         contenedor.innerHTML+=`
-        <button class="btn  bg-principal mb-2" type="button">0</button>
-        `
+        <button class="btn bg-principal mb-2 btnCategoriaElegida" type="button">${event.target.value}</button>
+       `
+    contnedorEliminar()
+}
+/* document.querySelector("#contendorSelectSelecionados").addEventListener("click",contnedorEliminar) */
+function contnedorEliminar() {
+    const btnAEliminarCategoria=document.querySelectorAll(".btnCategoriaElegida")
+    btnAEliminarCategoria.forEach(element => {
+        element.addEventListener("click",eliminarBtnCategoriar)
+    });
+}
+
+function eliminarBtnCategoriar(event) {
+    event.target.remove()
+    
 }
 //Read
 async function loadcategoria() {
