@@ -8,14 +8,17 @@ const productoSchema = mongoose.Schema({
     },
     foto: {
         type: String,
-        trim: true
+        trim: true,
+        default:"..."
     },
     marca: {
         type: String,
+        require: true,
         trim: true
     },
     codigo: {
         type: String,
+        require: true,
         trim: true
     },
     precio_compra: {
