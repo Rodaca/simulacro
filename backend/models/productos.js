@@ -41,7 +41,7 @@ const productoSchema = mongoose.Schema({
     },
     cantidad: {
         type: Number,
-        require: true,
+        default:0,
         trim: true
     }
 }

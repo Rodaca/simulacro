@@ -45,7 +45,7 @@ export const del = async (id) =>{
 //Read One
 export async function one(id) {
     try {
-        const response = await fetch(`${urlOne}/${id}`);
+        const response = await fetch(`${url}/${id}`);
         const result = await response.json();
         return result;
     } catch (error) {
@@ -56,7 +56,7 @@ export async function one(id) {
 //Update
 export async function upd(data,id){
     try {
-            await fetch(`${urlUpdate}/${id}`,{
+            await fetch(`${url}/${id}`,{
             method: "PUT",
             body: JSON.stringify(data),
             headers:{

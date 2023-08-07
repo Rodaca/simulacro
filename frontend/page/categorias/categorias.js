@@ -1,33 +1,47 @@
 import { add,del,one,all,upd } from "./api.js";
-
+/* formulario de producto para inglesar la categorias */
 document.addEventListener("DOMContentLoaded", ()=>{
     loadcategoria();
     loadcategoriaSelect();
+    eliminarBtnCategoriaCard();
+    contnedorEliminar();
 });
 
-async function loadcategoriaSelect(){
+export async function loadcategoriaSelect(){
     const categorias = await all();
-    const contenedor = document.querySelector("#SelectAddCategoria");
-    categorias.forEach((categoria) => {
-        const {tipo,_id}=categoria;
-        contenedor.innerHTML+=`
-        <option value="${tipo}">${tipo}</option>
-        `
+    const contenedor = document.querySelectorAll("#SelectAddCategoria");
+    contenedor.forEach(element => {
+        categorias.forEach((categoria) => {
+            const {tipo,_id}=categoria;
+            element.innerHTML+=`
+            <option value="${tipo}">${tipo}</option>
+            `
+        });
     });
-}
-const SelectAddCategoria=document.querySelector("#SelectAddCategoria")
-SelectAddCategoria.addEventListener("change",cargarSelecionados)
-function cargarSelecionados(event){
     
-    const contenedor = document.querySelector("#contendorSelectSelecionados");
-        
-        contenedor.innerHTML+=`
-        <button class="btn bg-principal mb-2 btnCategoriaElegida" type="button">${event.target.value}</button>
-       `
-    contnedorEliminar()
 }
-/* document.querySelector("#contendorSelectSelecionados").addEventListener("click",contnedorEliminar) */
+const SelectAddCategoria=document.querySelectorAll("#SelectAddCategoria")
+SelectAddCategoria.forEach(element => {
+    element.addEventListener("change",cargarSelecionados)
+});
+export function cargarSelecionados(event){
+      
+    const contenedor = document.querySelectorAll("#contendorSelectSelecionados");
+    contenedor.forEach( element=> {
+        element.innerHTML+=`
+        <button class="btn bg-principal mb-2 btnCategoriaElegida" type="button">${event.target.value}</button>
+        `
+        contnedorEliminar()
+    });
+        
+}
+
+
 function contnedorEliminar() {
+    const SelectAddCategoria=document.querySelectorAll("#SelectAddCategoria")
+    SelectAddCategoria.forEach(element => {
+    element.addEventListener("change",cargarSelecionados)
+});
     const btnAEliminarCategoria=document.querySelectorAll(".btnCategoriaElegida")
     btnAEliminarCategoria.forEach(element => {
         element.addEventListener("click",eliminarBtnCategoriar)
@@ -38,6 +52,23 @@ function eliminarBtnCategoriar(event) {
     event.target.remove()
     
 }
+/* vaciar el contnedor de agregar produtos */
+document.querySelector('#btnAgregarProducto').addEventListener("click",vaciarContenedor)
+function vaciarContenedor() {
+    const contenedor = document.querySelector("#contendorSelectSelecionados");
+    contenedor.innerHTML=""
+}
+/* eliminar las categorias seleccionadas */
+function eliminarBtnCategoriaCard() {
+    const updProducto= document.querySelectorAll(".updProducto")
+    updProducto.forEach(element => {
+        console.log(element);
+        element.addEventListener("click",contnedorEliminar)
+        console.log("si");
+    });
+}
+
+
 //Read
 async function loadcategoria() {
     const categorias = await all();
@@ -93,62 +124,11 @@ eliminar.addEventListener("click",borrar);
 
 function borrar(e){
     if (e.target.classList.contains("deleteCategorias")) {
-        console.log(e.target);
         const id = e.target.getAttribute("id");
-        const confir = confirm("Desea eliminar este Premio?");
+        const confir = confirm("Desea eliminar esta Categoria?");
         if (confir) {
             del(id);
         }
     }
 }
 
-/*
-//Read One
-const infoCategoria = document.querySelector("main");
-infoCategoria.addEventListener("click",getInfo);
-
-async function getInfo(e){
-    if (e.target.classList.contains("update")) {
-        const id = e.target.getAttribute("id");
-        const informacion = await selectOne(id);
-
-        const {_id,nombre,descripcion,ganador, equipo} = informacion;
-
-        const nombreEdit = document.querySelector('#nombreEdit');
-        const descripcionEdit = document.querySelector('#descripcionEdit');
-        const ganadorEdit = document.querySelector('#ganadorEdit');
-        const equipoEdit = document.querySelector('#equipoEdit');
-        const idEdit = document.querySelector('#idEdit');
-
-        nombreEdit.value = nombre;
-        descripcionEdit.value = descripcion;
-        ganadorEdit.value = ganador;
-        equipoEdit.value = equipo;
-        idEdit.value = _id;
-    }
-};
-
-
-//Update
-const formEdit = document.querySelector("#formEditPremio");
-formEdit.addEventListener('submit',actualizar)
-
-function actualizar(e){
-    e.preventDefault();
-    const id = document.querySelector('#idEdit').value;
-    const nombre = document.querySelector('#nombreEdit').value;
-    const descripcion = document.querySelector('#descripcionEdit').value;
-    const ganador = document.querySelector('#ganadorEdit').value;
-    const equipo = document.querySelector('#equipoEdit').value;
-
-    const datos ={
-        nombre,
-        descripcion,
-        ganador,
-        equipo
-    }
-
-    alert('Datos editados correctamente');
-
-    return updatePremio(datos,id);
-}; */
