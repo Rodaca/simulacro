@@ -388,9 +388,15 @@ function actualizar() {
 }
 
 document.querySelector('#filter').addEventListener("click", loadfilter)
+document.querySelector('#search').addEventListener("keyup", function(event) {
+    console.log("si");
+    if (event.key === "Enter") {
+        loadfilter()
+    }
+  });
 
 async function loadfilter() {
-
+    
     const search = document.querySelector("#search").value
     const productos = await filter(search);
     const productosArray = productos.results
