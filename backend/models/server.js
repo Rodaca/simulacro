@@ -4,6 +4,7 @@ import cors from "cors";
 import productoRoutes from '../routes/producto.routes.js';
 import categoriaRoutes from '../routes/categoria.routes.js';  
 import usuarioRoutes from '../routes/usuario.routes.js';  
+import searchRoutes from '../routes/search.routes.js';  
 
 class Server {
 
@@ -13,6 +14,7 @@ class Server {
         this.productoPath = '/api/producto';
         this.categoriaPath = '/api/categoria';
         this.usuarioPath = '/api/usuario';
+        this.searchPath = '/api/search';
 
         
         this.middlewars();
@@ -30,6 +32,7 @@ class Server {
         this.app.use(this.productoPath, productoRoutes);
         this.app.use(this.categoriaPath, categoriaRoutes);
         this.app.use(this.usuarioPath, usuarioRoutes);
+        this.app.use(this.searchPath, searchRoutes);
 
     }
 
