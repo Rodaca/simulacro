@@ -1,22 +1,35 @@
-import { all } from "./api.js";
 
 
-//Read
-document.querySelector('#btnInicioSecion').addEventListener("submit",load)
+import { login } from "./API.js";
+    const formulario = document.querySelector('#btnInicioSecion');
+    formulario.addEventListener('submit', validateLogin);
 
-async function load(e) {
-    e.preventDefault();
-    const usuarios = await all();
-    const correoForm= document.querySelector("#emailInicioSeccion").value
-    const passwordForm= document.querySelector("#passwordInicioSeccion").value
-    usuarios.forEach((element) => {
-        const {user,password,email,rol}=element;
-        console.log(password,email);
-        console.log(passwordForm,correoForm);
-        if (correoForm===email && passwordForm===password) {
-            window.location.href = "almacen.html"
+    async function validateLogin(event) {
+        event.preventDefault();
+        const email = document.querySelector('#emailInicioSeccion').value;
+        const password = document.querySelector('#passwordInicioSeccion').value;
+    
+        const datos = {
+            email,
+            password
+        };
+    
+        try {
+            const response = await login(datos);
+            if (response.success) {
+                await Swal.fire({
+                    icon: 'success',
+                    title: 'Iniciando Sesion',
+                  })
+                  localStorage.setItem('token', response.token);
+                window.location.href = 'index.html';
+           }
+        } catch (error) {
+            Swal.fire({
+                title: '¡Error!',
+                text: 'Email o Contraseña incorrecta',
+                icon: 'error',
+                confirmButtonText: 'Close'
+              })
         }
-        
-    });
-    alert("contraseña o correo incorrecto pruebe usuario1@example.com y contraseña1")
-}
+    }
